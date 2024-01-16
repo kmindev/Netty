@@ -3,19 +3,21 @@ package org.example;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
+import java.nio.charset.Charset;
+
 public class ClientInitializer extends ChannelInitializer<SocketChannel> {
+
+    private final Charset charset = Charset.defaultCharset();
+
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         ChannelPipeline pipeline = socketChannel.pipeline();
 
-        pipeline.addLast(new LineBasedFrameDecoder(65536));
-        pipeline.addLast(new StringDecoder());
-        pipeline.addLast(new StringEncoder());
-        pipeline.addLast(new ClientHadler());
-
+        pipeline.addLast(new StringDecoder(charset))
+                .addLast(new StringEncoder(charset))
+                .addLast(new CustomerFirstHandler());
     }
 }
