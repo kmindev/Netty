@@ -1,10 +1,11 @@
-package org.example;
+package org.example.netty;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import org.example.handler.CustomerFirstHandler;
 
 import java.nio.charset.Charset;
 

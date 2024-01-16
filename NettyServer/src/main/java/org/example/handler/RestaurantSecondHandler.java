@@ -1,4 +1,4 @@
-package org.example;
+package org.example.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

@@ -1,9 +1,9 @@
-package org.example;
+package org.example.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class CustomerFirstHandler extends ChannelInboundHandlerAdapter {
 
@@ -31,16 +31,8 @@ public class CustomerFirstHandler extends ChannelInboundHandlerAdapter {
     }
 
     private String menuInput() {
-        Scanner sc = new Scanner(System.in);
-        String sendData = "";
-
-        while (!sendData.contains("1") && !sendData.contains("2") && !sendData.contains("3")) {
-            System.out.println("메뉴를 선택해주세요. (1, 2, 3): ");
-            sendData = sc.nextLine();
-        }
-
-        sc.close();
-
-        return sendData;
+        int menuNum = new Random().nextInt(3) + 1;
+        System.out.println(menuNum + "번 메뉴를 선택했습니다.");
+        return Integer.toString(menuNum);
     }
 }
