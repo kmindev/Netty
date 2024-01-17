@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.config.NettyServerConfig;
-import org.example.netty.RestaurantServer;
+import org.example.netty.TelnetServer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -11,7 +11,7 @@ public class NettyServerStarter {
         try {
             ApplicationContext ac = new AnnotationConfigApplicationContext(NettyServerConfig.class);
 
-            RestaurantServer server = ac.getBean(RestaurantServer.class);
+            TelnetServer server = ac.getBean(TelnetServer.class);
             server.start();
         } catch (Exception e) {
             e.printStackTrace();

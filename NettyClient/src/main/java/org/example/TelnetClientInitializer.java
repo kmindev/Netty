@@ -1,15 +1,14 @@
-package org.example.netty;
+package org.example;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
-import org.example.handler.CustomerFirstHandler;
 
 import java.nio.charset.Charset;
 
-public class ClientInitializer extends ChannelInitializer<SocketChannel> {
+public class TelnetClientInitializer extends ChannelInitializer<SocketChannel> {
 
     private final Charset charset = Charset.defaultCharset();
 
@@ -19,6 +18,6 @@ public class ClientInitializer extends ChannelInitializer<SocketChannel> {
 
         pipeline.addLast(new StringDecoder(charset))
                 .addLast(new StringEncoder(charset))
-                .addLast(new CustomerFirstHandler());
+                .addLast(new TelnetClientHandler());
     }
 }

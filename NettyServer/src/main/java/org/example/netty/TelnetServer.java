@@ -11,12 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.awt.*;
-import java.lang.ref.PhantomReference;
 import java.net.InetSocketAddress;
 
 @Component
-public class RestaurantServer {
+public class TelnetServer {
 
     @Autowired
     private InetSocketAddress tcpPort;
@@ -37,7 +35,7 @@ public class RestaurantServer {
             bootstrap
                     .group(bossEventLoopGroup, workerEventLoopGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new RestaurantServerInitializer());
+                    .childHandler(new TelnetServerInitializer());
 
             ChannelFuture channelFuture = bootstrap.bind(tcpPort).sync();
             channels.add(channelFuture.channel()); // 채널 그룹에 추가
